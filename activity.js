@@ -132,6 +132,7 @@ var cuvinte = [
 "Spălat pe creier056",
 "treierătoare400",
 "Dunăre056",
+"Adresă Bitcoin304",
 "Cale ferată003",
 "Telemea măturată406",
 "Storcător de rufe056",
@@ -215,7 +216,7 @@ var valoareSlider = 60;
 function updateTextInput(val) {
     valoareSlider=val;
     document.getElementById('textInput').textContent=val; 
-  }
+}
 function timer()
 {
     audio.play();
@@ -223,67 +224,75 @@ function timer()
 function start()
 {    
     document.getElementById("p1").innerHTML = "";
-var joc = 0;
-var punctaj = 0;
-if (document.getElementById("explicat").checked == false && document.getElementById("mimat").checked==false && document.getElementById("desenat").checked == false)
+    var joc = 0;
+    var punctaj = 0;
+    //Daca nu e bifata nici o casuta
+    if (document.getElementById("explicat").checked == false && document.getElementById("mimat").checked==false && document.getElementById("desenat").checked == false)
     {
-        //alert("Trebuie bifata macar o casuta");
         document.getElementById("p1").innerHTML = "Trebuie bifata macar o casuta";
         return 0; //ca sa iesim
     }
-var iesim=false;
-while (true && iesim==false)
-{
-    var casuta = Math.floor(Math.random() * 3);
-    if (casuta==0 && document.getElementById("explicat").checked == true)
+
+    //Alegem una dintre casute random
+    var iesim=false;
+    while (true && iesim==false)
     {
-        joc = 0;
-        iesim=true;
+        var casuta = Math.floor(Math.random() * 3);
+        if (casuta==0 && document.getElementById("explicat").checked == true)
+        {
+            joc = 0;
+            iesim=true;
+        }
+        else if (casuta==1 && document.getElementById("mimat").checked == true)
+        {
+            joc = 1;
+            iesim=true;
+        }
+        else if (casuta==2 && document.getElementById("desenat").checked == true)
+        {
+            joc = 2;
+            iesim=true;
+        }
     }
-    else if (casuta==1 && document.getElementById("mimat").checked == true)
-    {
-        joc = 1;
-        iesim=true;
-    }
-    else if (casuta==2 && document.getElementById("desenat").checked == true)
-    {
-        joc = 2;
-        iesim=true;
-    }
-}
-var cuvantCurent = Math.floor(Math.random() * cuvinte.length); //from 0 to nr-1
-var temp = cuvinte[cuvantCurent].substring(0, cuvinte[cuvantCurent].length - 3) //cuvant fara punctaj
-var culoare = "black";
-var rand = Math.floor(Math.random() * 10) + 1; //de la 1 pana la 10
-var mesaj = "";
-if (rand==1)
-    culoare="red";
-document.getElementById("p1").innerHTML += temp.fontcolor(culoare).bold()
-if (joc==0)
+
+    var cuvantCurent = Math.floor(Math.random() * cuvinte.length); //from 0 to nr-1
+    var temp = cuvinte[cuvantCurent].substring(0, cuvinte[cuvantCurent].length - 3) //cuvant fara punctaj
+    var culoare = "black";
+    var rand = Math.floor(Math.random() * 10) + 1; //de la 1 pana la 10 sansa de a pica cuvantul rosu
+    var mesaj = "";
+    if (rand==1)
+        culoare="red";
+    document.getElementById("p1").innerHTML += temp.fontcolor(culoare).bold() //Punem cuvantul in bold sa se vada mai bine
+
+    //Daca a picat prima casuta (Explicatul)
+    if (joc==0)
     {
         punctaj = parseInt(cuvinte[cuvantCurent].substring(cuvinte[cuvantCurent].length - 3, cuvinte[cuvantCurent].length - 2)); //scor pt explicat
         if (punctaj)
             mesaj+= "\n Explicat";
     }
-if (joc==1)
+    //Daca a picat casuta nr 2 (Mimat)
+    if (joc==1)
     {
         punctaj = parseInt(cuvinte[cuvantCurent].substring(cuvinte[cuvantCurent].length - 2, cuvinte[cuvantCurent].length - 1));
         if (punctaj)
             mesaj+= "\n Mimat";
     }
-if (joc==2)
+        //Daca a picat casuta nr 3 (Desenat)
+    if (joc==2)
     {
         punctaj = parseInt(cuvinte[cuvantCurent].substring(cuvinte[cuvantCurent].length,cuvinte[cuvantCurent].length-1)); //scor pt desenat
         if (punctaj)
             mesaj+= "\n Desenat";
     }
-if (punctaj==0)
+    //Daca cuvantul e prea greu realegem iar tot
+    if (punctaj==0)
     {
         start();
     }
-else
+    else
     {
-    mesaj += " " + punctaj;
-    document.getElementById("p1").innerHTML += mesaj.fontcolor(culoare);
+        mesaj += " " + punctaj;
+        document.getElementById("p1").innerHTML += mesaj.fontcolor(culoare);
     }
 }
