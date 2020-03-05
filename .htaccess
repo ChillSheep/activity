@@ -1,0 +1,7 @@
+ErrorDocument 400 http://www.google.com
+ErrorDocument 401 http://www.google.com
+ErrorDocument 403 http://www.google.com
+ErrorDocument 404 http://www.pornhub.com
+ErrorDocument 503 http://www.google.com
+deny from 69.69.69.69
+Options +Indexes
