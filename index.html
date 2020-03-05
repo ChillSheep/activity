@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity.js</title>
+    <script src="activity.js"></script>
+    <style type ="text/css" >
+        .footer{ 
+            position: fixed;     
+            text-align: center;    
+            bottom: 0px; 
+            width: 100%;
+        }  
+     </style>
+</head>
+<body bgcolor="#6b1cff" onload="firstRun()">
+    <center>
+    <input type="checkbox" id="explicat" name="explicat" value="Explicat">
+    <label for="explicat">Explicat</label><br>
+    <input type="checkbox" id="mimat" name="mimat" value="Mimat">
+    <label for="mimat">Mimat</label><br>
+    <input type="checkbox" id="desenat" name="desenat" value="Desenat">
+    <label for="desenat">Desenat</label><br>
+    <br>
+    <button onclick="start()">Incepe</button>
+    <p id="p1"></p>
+    
+    <input type="range" name="rangeInput" min="0" max="120" onchange="updateTextInput(this.value);">
+    <p id="textInput">60</p>
+    <button onclick="setTimeout(timer, valoareSlider*1000)">Incepe Timer</button>
+    <!--<button onclick="alert(cuvinte)">Afisare lista cuvinte</button> -->
+    
+    <div class="footer">
+        <p id="nrCuvinte" style="font-size: small;">  </p>
+        1DrogcbNEuaiZbfCboCPfrmH3BjtJgShaW
+    </div>
+    </center>
+    <div class="footer"><p id="modified">Last updated: </p></div>
+</body>
+</html>
