@@ -217,9 +217,17 @@ function updateTextInput(val) {
     valoareSlider=val;
     document.getElementById('textInput').textContent=val; 
 }
-function timer()
+function timer(x) //Am facut sa fie animat
 {
-    audio.play();
+    document.getElementById("textInput").innerHTML = x;
+    if (x==0)
+        {
+            audio.play();
+            return 0; //iesim sa nu se mai apeleze functia
+        }
+    x=x-1;
+    //return timer(x);
+    setTimeout(() => {  timer(x); }, 1000);
 }
 function start()
 {    
