@@ -295,27 +295,46 @@ function updateTextInput(val) {
     valoareSlider=val;
     document.getElementById('textInput').textContent=val;
 }
+var stopTimer=false;
 var isInTimer=false;
 function tryTimer(x)
 {
+    
     if (isInTimer==false)
+    {
         timer(x);
+    }
+        return 0;
+}
+function stopTimerFunc()
+{
+    stopTimer=true;
     return 0;
 }
 function timer(x) //Am facut sa fie animat
 {
+    if (stopTimer==true)
+    {
+        stopTimer=false;
+        isInTimer=false;
+        return 0;
+    }
+    else
+    {
     isInTimer = true;
     document.getElementById("textInput").innerHTML = x;
     if (x==0)
         {
             audio.play();
+            stopTimer==false;
             isInTimer=false;
             return 0; //iesim sa nu se mai apeleze functia
         }
-        document.getElementById("timer").value = x;
+    document.getElementById("timer").value = x;
     x=x-1;
     
     setTimeout(() => {  timer(x); }, 1000);
+    }
 }
 
 function start()
