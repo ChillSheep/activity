@@ -260,6 +260,25 @@ var cuvinte = [
 "abcdefghijklmnopqrstuvwxyz306",
 "Virgin243"];
 var audio = new Audio('sunet.mp3');
+
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+            }
+        }
+    }
+    rawFile.send(null);
+}
+
+
 function firstRun()
 {
     document.getElementById("p1").style.fontFamily = "Roboto,Charcoal,sans-serif";
@@ -274,22 +293,31 @@ function firstRun()
 var valoareSlider = 60;
 function updateTextInput(val) {
     valoareSlider=val;
-    document.getElementById('textInput').textContent=val; 
+    document.getElementById('textInput').textContent=val;
 }
-
+var isInTimer=false;
+function tryTimer(x)
+{
+    if (isInTimer==false)
+        timer(x);
+    return 0;
+}
 function timer(x) //Am facut sa fie animat
 {
-
+    isInTimer = true;
     document.getElementById("textInput").innerHTML = x;
     if (x==0)
         {
             audio.play();
+            isInTimer=false;
             return 0; //iesim sa nu se mai apeleze functia
         }
+        document.getElementById("timer").value = x;
     x=x-1;
-    //return timer(x);
+    
     setTimeout(() => {  timer(x); }, 1000);
 }
+
 function start()
 {    
     document.getElementById("p1").innerHTML = "";
@@ -326,7 +354,7 @@ function start()
 
     var cuvantCurent = Math.floor(Math.random() * cuvinte.length); //from 0 to nr-1
     var temp = cuvinte[cuvantCurent].substring(0, cuvinte[cuvantCurent].length - 3) //cuvant fara punctaj
-    var culoare = "black";
+    var culoare = "white";
     var rand = Math.floor(Math.random() * 10) + 1; //de la 1 pana la 10 sansa de a pica cuvantul rosu
     var mesaj = "";
     if (rand==1)
