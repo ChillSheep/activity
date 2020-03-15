@@ -290,7 +290,7 @@ function firstRun()
     var foo = "Momentan sunt " + cuvinte.length + " cuvinte";
     document.getElementById("nrCuvinte").textContent = foo;
 }
-var valoareSlider = 60;
+var valoareSlider = 80;
 function updateTextInput(val) {
     valoareSlider=val;
     document.getElementById('textInput').textContent=val;
@@ -336,7 +336,7 @@ function timer(x) //Am facut sa fie animat
     setTimeout(() => {  timer(x); }, 1000);
     }
 }
-
+var cuvinteDejaGenerate = new Array;
 function start()
 {    
     document.getElementById("p1").innerHTML = "";
@@ -348,7 +348,6 @@ function start()
         document.getElementById("p1").innerHTML = "Trebuie bifata macar o casuta";
         return 0; //ca sa iesim
     }
-
     //Alegem una dintre casute random
     var iesim=false;
     while (true && iesim==false)
@@ -370,8 +369,19 @@ function start()
             iesim=true;
         }
     }
-
-    var cuvantCurent = Math.floor(Math.random() * cuvinte.length); //from 0 to nr-1
+    var cuvantCurent
+    do 
+    {
+        if (cuvinte.length == cuvinteDejaGenerate.length)
+        {
+            alert("Avem prea putine cuvinte, de acum cuvintele se vor repeta");
+            cuvinteDejaGenerate = [];
+            break;
+        }
+        cuvantCurent = Math.floor(Math.random() * cuvinte.length);
+    } while(cuvinteDejaGenerate.includes(cuvantCurent)==true)
+    cuvinteDejaGenerate.push(cuvantCurent);
+      //from 0 to nr-1
     var temp = cuvinte[cuvantCurent].substring(0, cuvinte[cuvantCurent].length - 3) //cuvant fara punctaj
     var culoare = "white";
     var rand = Math.floor(Math.random() * 10) + 1; //de la 1 pana la 10 sansa de a pica cuvantul rosu
