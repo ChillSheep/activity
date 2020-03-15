@@ -375,7 +375,7 @@ function start()
         if (cuvinte.length == cuvinteDejaGenerate.length)
         {
             alert("Avem prea putine cuvinte, de acum cuvintele se vor repeta");
-            cuvinteDejaGenerate = [];
+            cuvinteDejaGenerate.length = 0; //cuvinteDejaGenerate.length = 0;
             break;
         }
         cuvantCurent = Math.floor(Math.random() * cuvinte.length);

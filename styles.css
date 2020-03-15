@@ -1,13 +1,29 @@
-.btn{
-    background-color: #4CAF50;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    color: white;
-    padding: 10px 22px;
-    display: inline-block;
+html,
+body {
+    height: 100%;
+    width: 100%;
     font-size: 16px;
-    border-radius: 4px;
+    background-color: black;
+}
+* {
+    font-family: roboto;
+    max-width: 1800px;
+    background-color: black;
+}
+.container-fluid {
+    background-color: black;
+    margin-top: 1rem;
+}
+.container-fluid label {
+    color: white;
+}
+.btn-success {
+background-color: #28a745;
+transition: 0.5s;
+}
+.btn-success:hover {
+background-color: rgb(11, 253, 15);
+transition: 0.5s;
 }
 p{
     color: white
@@ -15,7 +31,7 @@ p{
 
 .white
 {
-    color: white
+    color: black;
 }
 .footer{ 
     position: fixed;     
@@ -26,12 +42,14 @@ p{
 .upperish{
     bottom: 12px;
 }
-input[type="checkbox"]
-{
-    position: relative;
-    width: 1.5em;
-    height: 1.5em;
+.nav {
+
+    padding-top: 1em;
+    text-align: center;
+    display: block;
 }
+
+
 .slidecontainer {
     color: #000;
 }
@@ -68,4 +86,20 @@ input[type="checkbox"]
     height: 25px;
     background: #4CAF50;
     cursor: pointer;
+ }
+ .mainLbl {
+     color:white
+ }
+
+ #mainRow {
+     margin-top: 1rem;
+ }
+
+ .checkboxes-hr {
+    border-top: 1px solid rgb(139, 11, 212);
+    background-color: rgb(139, 11, 212);
+ }
+
+ #p1 {
+     padding-top: 1rem;
  }

@@ -1,35 +1,50 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activity.js</title>
     <script src="activity.js"></script>
+    <div class="col-sm-3"></div>
 </head>
-<body bgcolor="#000000" onload="firstRun()">
-    <center>
-    <input type="checkbox" id="explicat" name="explicat" value="Explicat">
-    <label class="white" for="explicat">Explicat</label><br>
-    <input type="checkbox" id="mimat" name="mimat" value="Mimat">
-    <label class="white for="mimat">Mimat</label><br>
-    <input type="checkbox" id="desenat" name="desenat" value="Desenat">
-    <label class="white for="desenat">Desenat</label><br>
-    <br>
-    <button class="btn" onclick="start()">Incepe</button>
-    <p id="p1"></p>
-    <input id="timer" class="slider" type="range" name="rangeInput" min="0" max="120" onchange="updateTextInput(this.value);">
-    <p id="textInput">60</p>
-    <!-- <button onclick="setTimeout(timer, valoareSlider*1000)">Incepe Timer</button> <!--<button onclick="alert(cuvinte)">Afisare lista cuvinte</button> -->
-    <button class="btn" onclick="tryTimer(valoareSlider)">Incepe Timer</button>
-    <br>
-    <br>
-    <div><button class="btn" onclick="stopTimerFunc()">Opreste Timer</button></div>
-    <div class="footer">
-        <p class="white" id="nrCuvinte" style="font-size: small;">  </p>
-        
+<body onload="firstRun()">
+            <center>
+                <div id="mainRow" class="row">
+                    <div class="col-sm">
+                        <input class="chkbox" type="checkbox" id="explicat" name="explicat" value="Explicat">
+                        <label class="mainLbl" for="explicat">Explicat</label>
+                    </div>
+                    <div class="col-sm">
+                        <input class="chkbox" type="checkbox" id="mimat" name="mimat" value="Mimat">
+                        <label class="mainLbl" for="mimat">Mimat</label>
+                    </div>
+                    <div class="col-sm">
+                        <input class="chkbox" type="checkbox" id="desenat" name="desenat" value="Desenat">
+                        <label class="mainLbl" for="desenat">Desenat</label>
+                    </div>
+                </div>
+            <div>
+                <hr class="checkboxes-hr">
+                <button class="btn btn-success" onclick="start()">Incepe</button>
+            </div>
+            <p id="p1"></p>
+            <input id="timer" class="slider" type="range" name="rangeInput" min="0" max="160" onchange="updateTextInput(this.value);">
+            <p id="textInput">80</p>
+            
+            
+            <!-- <button onclick="setTimeout(timer, valoareSlider*1000)">Incepe Timer</button> <!--<button onclick="alert(cuvinte)">Afisare lista cuvinte</button> -->
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <button class="btn btn-success" onclick="tryTimer(valoareSlider)">Incepe Timer</button>
+                <button class="btn btn-success" onclick="stopTimerFunc()">Opreste Timer</button>
+            </div>
+            <div class="footer">
+                <p id="nrCuvinte" style="font-size: small;">  </p>
+            </div>
     </div>
-    <br>
+
+
     <div class="footer upperish"><p id="modified">Last updated: </p></div>
     </center>
     
