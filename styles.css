@@ -55,9 +55,7 @@ p{
 {
     display: block;
 }
-ul {
-    list-style-type: none;
-}
+
 .slidecontainer {
     color: #000;
 }
@@ -115,4 +113,14 @@ ul {
 .small {
     font-size: small;
     margin-top: 1rem;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.smaller-hr {
+    max-width: 30rem;
 }

@@ -281,7 +281,7 @@ function readTextFile(file)
 var mesajNrCuvinte = "Momentan sunt " + cuvinte.length + " cuvinte";
 function firstRun()
 {
-    document.getElementById("p1").style.fontFamily = "Roboto,Charcoal,sans-serif";
+    document.getElementById("p1").style.fontFamily = "Roboto,Charcoal,sans-serif";  
     document.getElementById("nrCuvinte").textContent = mesajNrCuvinte;
 }
 var valoareSlider = 80;
