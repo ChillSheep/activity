@@ -282,11 +282,6 @@ var mesajNrCuvinte = "Momentan sunt " + cuvinte.length + " cuvinte";
 function firstRun()
 {
     document.getElementById("p1").style.fontFamily = "Roboto,Charcoal,sans-serif";
-    var xhReq = new XMLHttpRequest();
-    xhReq.open("HEAD", "activity.js", false);
-    xhReq.send(null);
-    var lastModified = xhReq.getResponseHeader("Last-Modified");
-    document.getElementById('modified').textContent = "Last updated: " + lastModified;
     document.getElementById("nrCuvinte").textContent = mesajNrCuvinte;
 }
 var valoareSlider = 80;
