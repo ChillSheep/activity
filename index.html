@@ -13,16 +13,16 @@
             <center>
                 <div id="mainRow" class="row">
                     <div class="col-sm">
-                        <input class="chkbox" type="checkbox" id="explicat" name="explicat" value="Explicat">
-                        <label class="mainLbl" for="explicat">Explicat</label>
+                            <input class="chkbox" type="checkbox" id="explicat" name="explicat" value="Explicat">
+                            <label class="mainLbl" for="explicat">Explicat</label>
                     </div>
                     <div class="col-sm">
-                        <input class="chkbox" type="checkbox" id="mimat" name="mimat" value="Mimat">
-                        <label class="mainLbl" for="mimat">Mimat</label>
+                            <input class="chkbox" type="checkbox" id="mimat" name="mimat" value="Mimat">
+                            <label class="mainLbl" for="mimat">Mimat</label>
                     </div>
                     <div class="col-sm">
-                        <input class="chkbox" type="checkbox" id="desenat" name="desenat" value="Desenat">
-                        <label class="mainLbl" for="desenat">Desenat</label>
+                            <input class="chkbox" type="checkbox" id="desenat" name="desenat" value="Desenat">
+                            <label class="mainLbl" for="desenat">Desenat</label>
                     </div>
                 </div>
             <div>
@@ -39,11 +39,69 @@
                 <button class="btn btn-success" onclick="tryTimer(valoareSlider)">Incepe Timer</button>
                 <button class="btn btn-success" onclick="stopTimerFunc()">Opreste Timer</button>
             </div>
+            <p id="nrCuvinte" class="small"></p>
+            <p id="randulEchipei" class="small"></p>
             <div class="footer">
-                <p id="nrCuvinte" style="font-size: small;">  </p>
+                
             </div>
     </div>
+    <div id="btnGroup2" class="btn-group btn-group-toggle" data-toggle="buttons">
+    <button id="adaugaEchipa" class="btn btn-success" onclick="addTeam()">Adauga Echipa</button>
+    <button id="adaugaPunctaj" class="btn btn-success" onclick="adaugaPunctaj(0)">Adauga Punctaj</button>
+    </div>
+    <br>
+    <br>
+    <div class="btn-group btn-group-toggle">
+        
+        <button id="butoane-rosu-echipa1" class="btn btn-success d-none" onclick="adaugaPunctaj(1)">
+            Echipa 1
+        </button>
+        <button id="butoane-rosu-echipa2" class="btn btn-success d-none" onclick="adaugaPunctaj(2)">
+            Echipa 2
+        </button>
+        <button id="butoane-rosu-echipa3" class="btn btn-success d-none" onclick="adaugaPunctaj(3)">
+            Echipa 3
+        </button>
+        <button id="butoane-rosu-echipa4" class="btn btn-success d-none" onclick="adaugaPunctaj(4)">
+            Echipa 4
+        </button>
+    </div>
 
+    <div class="row">
+        <div id="echipa1" class="col-sm">
+            <ul>
+                <li id="li1">
+                    <p>Echipa 1</p>
+                    <hr class="checkboxes-hr">
+                    
+                </li>
+            </ul>
+        </div>
+        <div id="echipa2" class="col-sm">
+            <ul>
+                <li id="li2">
+                    <p>Echipa 2</p>
+                    <hr class="checkboxes-hr">
+                </li>
+            </ul>
+        </div>
+        <div id="echipa3" class="col-sm d-none">
+            <ul>
+                <li id="li3">
+                    <p>Echipa 3</p>
+                    <hr class="checkboxes-hr">
+                </li>
+            </ul>
+        </div>
+        <div id="echipa4" class="col-sm d-none">
+            <ul>
+                <li id="li4">
+                    <p>Echipa 4</p>
+                    <hr class="checkboxes-hr">
+                </li>
+            </ul>
+        </div>
+    </div>
 
     <div class="footer upperish"><p id="modified">Last updated: </p></div>
     </center>

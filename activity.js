@@ -278,7 +278,7 @@ function readTextFile(file)
     rawFile.send(null);
 }
 
-
+var mesajNrCuvinte = "Momentan sunt " + cuvinte.length + " cuvinte";
 function firstRun()
 {
     document.getElementById("p1").style.fontFamily = "Roboto,Charcoal,sans-serif";
@@ -287,8 +287,7 @@ function firstRun()
     xhReq.send(null);
     var lastModified = xhReq.getResponseHeader("Last-Modified");
     document.getElementById('modified').textContent = "Last updated: " + lastModified;
-    var foo = "Momentan sunt " + cuvinte.length + " cuvinte";
-    document.getElementById("nrCuvinte").textContent = foo;
+    document.getElementById("nrCuvinte").textContent = mesajNrCuvinte;
 }
 var valoareSlider = 80;
 function updateTextInput(val) {
@@ -336,18 +335,101 @@ function timer(x) //Am facut sa fie animat
     setTimeout(() => {  timer(x); }, 1000);
     }
 }
+var nrCuvGenerate = 0;
 var cuvinteDejaGenerate = new Array;
+var teamsAlreadyPresent = 2;
+var currentTeam = 0;
+function addTeam()
+{
+    teamsAlreadyPresent++;
+    switch(teamsAlreadyPresent) {
+        case 3:
+            document.getElementById("echipa3").classList.remove("d-none");
+            break;
+        case 4:
+            document.getElementById("echipa4").classList.remove("d-none");
+            document.getElementById("adaugaEchipa").classList.add("d-none");
+            document.getElementById("btnGroup2").classList.remove("btn-group-toggle");
+            document.getElementById("btnGroup2").classList.remove("btn-group");
+            break;
+    }
+}
+var punctajDejaAdaugat = false;
+function adaugaPunctaj(forTeam)
+{
+    if (punctajDejaAdaugat == true)
+        return 0;
+    var tempVar = document.createElement("p");
+    var textnode = document.createTextNode(punctaj);
+    tempVar.appendChild(textnode);
+    if (forTeam==0)
+    switch(currentTeam)
+        {
+            case 1:
+            document.getElementById("li1").appendChild(tempVar);
+            break;
+            case 2:
+            document.getElementById("li2").appendChild(tempVar);
+            break;
+            case 3:
+            document.getElementById("li3").appendChild(tempVar);
+            break;
+            case 4:
+            document.getElementById("li4").appendChild(tempVar);
+            break;
+        }
+    else
+    {
+        var temp = "li" + forTeam
+        document.getElementById(temp).appendChild(tempVar);
+
+    }
+    punctajDejaAdaugat = true;
+    hide();
+}
+function hide() {
+    document.getElementById("butoane-rosu-echipa1").classList.add("d-none");
+    document.getElementById("butoane-rosu-echipa2").classList.add("d-none");
+    if (teamsAlreadyPresent==3)
+    {
+    document.getElementById("butoane-rosu-echipa3").classList.add("d-none");
+    }
+    if (teamsAlreadyPresent==4)
+    {
+    document.getElementById("butoane-rosu-echipa3").classList.add("d-none");
+    document.getElementById("butoane-rosu-echipa4").classList.add("d-none");
+    }
+}
+var punctaj = 0;
+
+function cuvantRosu()
+{
+    document.getElementById("butoane-rosu-echipa1").classList.remove("d-none");
+    document.getElementById("butoane-rosu-echipa2").classList.remove("d-none");
+    if (teamsAlreadyPresent==3)
+    {
+    document.getElementById("butoane-rosu-echipa3").classList.remove("d-none");
+    }
+    if (teamsAlreadyPresent==4)
+    {
+    document.getElementById("butoane-rosu-echipa3").classList.remove("d-none");
+    document.getElementById("butoane-rosu-echipa4").classList.remove("d-none");
+    }
+}
 function start()
 {    
+    hide();
+    punctajDejaAdaugat = false;
     document.getElementById("p1").innerHTML = "";
     var joc = 0;
-    var punctaj = 0;
+    punctaj = 0;
     //Daca nu e bifata nici o casuta
     if (document.getElementById("explicat").checked == false && document.getElementById("mimat").checked==false && document.getElementById("desenat").checked == false)
     {
         document.getElementById("p1").innerHTML = "Trebuie bifata macar o casuta";
         return 0; //ca sa iesim
     }
+
     //Alegem una dintre casute random
     var iesim=false;
     while (true && iesim==false)
@@ -376,6 +458,7 @@ function start()
         {
             alert("Avem prea putine cuvinte, de acum cuvintele se vor repeta");
             cuvinteDejaGenerate.length = 0; //cuvinteDejaGenerate.length = 0;
+            nrCuvGenerate=0;
             break;
         }
         cuvantCurent = Math.floor(Math.random() * cuvinte.length);
@@ -387,7 +470,10 @@ function start()
     var rand = Math.floor(Math.random() * 10) + 1; //de la 1 pana la 10 sansa de a pica cuvantul rosu
     var mesaj = "";
     if (rand==1)
-        culoare="red";
+        {
+            culoare="red";
+            cuvantRosu();
+        }
     document.getElementById("p1").innerHTML += temp.fontcolor(culoare).bold() //Punem cuvantul in bold sa se vada mai bine
 
     //Daca a picat prima casuta (Explicatul)
@@ -418,7 +504,16 @@ function start()
     }
     else
     {
+        if (currentTeam<teamsAlreadyPresent)
+            currentTeam++;
+        else
+        {
+            currentTeam=1;
+        }
+        nrCuvGenerate++;
+        document.getElementById("nrCuvinte").textContent= mesajNrCuvinte + ", iar momentan ai generat din ele " + nrCuvGenerate + " cuvinte";
         mesaj += " " + punctaj;
         document.getElementById("p1").innerHTML += mesaj.fontcolor(culoare);
+        document.getElementById("randulEchipei").textContent = "E randul echipei " + currentTeam;
     }
 }
