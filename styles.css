@@ -4,11 +4,14 @@ body {
     width: 100%;
     font-size: 16px;
     background-color: black;
+    background: url(images/pattern.png) center center;
+    background-blend-mode: multiply;
+    background-color: rgba(0,0,0, .6);
 }
 * {
     font-family: roboto;
     max-width: 1800px;
-    background-color: black;
+
 }
 .container-fluid {
     background-color: black;
@@ -48,7 +51,10 @@ p{
     text-align: center;
     display: block;
 }
-
+#butoane-rosu
+{
+    display: block;
+}
 
 .slidecontainer {
     color: #000;
@@ -92,7 +98,7 @@ p{
  }
 
  #mainRow {
-     margin-top: 1rem;
+     margin-top: 1.8rem;
  }
 
  .checkboxes-hr {
@@ -103,3 +109,8 @@ p{
  #p1 {
      padding-top: 1rem;
  }
+
+.small {
+    font-size: small;
+    margin-top: 1rem;
+}
